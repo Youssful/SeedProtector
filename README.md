@@ -4,7 +4,7 @@
 ![Platform](https://img.shields.io/badge/Paper-26.2-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-**SeedProtector** is a lightweight, high-performance security plugin for Minecraft Paper servers that prevents **seed cracking** by randomizing all structure and feature seeds.
+**SeedProtector** is a lightweight, high-performance security plugin for Minecraft Paper servers that prevents **world seed cracking** by randomizing all structure and feature seeds.
 
 Developed by **[UsefulOrb](https://usefulorb.me)**.
 
@@ -24,12 +24,13 @@ Using client-side seed-cracking tools (such as *SeedcrackerX*), malicious player
 
 ## Features
 
-- **Automated Seed Scrambling**: Randomizes 21 distinct structure seeds in `spigot.yml` with cryptographically secure random values.
+- **Modular Architecture**: Clean, enterprise-grade separation of concerns across service, model, listener, and command layers.
+- **Native Adventure API**: Uses Paper's native Adventure Component API with zero deprecated legacy code.
+- **Automated Seed Scrambling**: Randomizes 21 distinct structure seeds in `spigot.yml` with secure pseudo-random 9-digit values.
 - **Paper Feature Seed Randomization**: Automatically configures `generate-random-seeds-for-all: true` in `config/paper-world-defaults.yml`.
-- **Status Auditing**: Check your server's protection level anytime with `/seedprotector status`.
+- **Status Auditing**: Inspect your server's protection level anytime with `/seedprotect audit`.
 - **Admin Join Notifications**: Alerts server operators upon login if the server is still running with default seeds.
-- **Lightweight & Dependency-Free**: Pure Java with zero runtime dependencies.
-- **Backward Compatible**: Supports `/seedshield` as a command alias.
+- **Flexible Command Aliases**: Supports `/seedguard`, `/seedprotector`, `/seedshield`, and `/sp`.
 
 ---
 
@@ -37,10 +38,14 @@ Using client-side seed-cracking tools (such as *SeedcrackerX*), malicious player
 
 | Command | Permission | Default | Description |
 | :--- | :--- | :--- | :--- |
-| `/seedprotector status` | `seedprotector.status` | OP | Check whether seeds are randomized or vulnerable. |
-| `/seedprotector scramble` | `seedprotector.scramble` | OP | Scramble all structure seeds in `spigot.yml` and Paper config. |
+| `/seedprotect audit` | `seedprotect.audit` | OP | Run a security audit on all structure & feature seeds. |
+| `/seedprotect randomize` | `seedprotect.randomize` | OP | Scramble all structure seeds in `spigot.yml` and Paper config. |
+| `/seedprotect help` | None | Everyone | Displays command usage and help menu. |
 
-> **Note**: Both commands also accept the `/seedshield` alias (e.g. `/seedshield scramble`).
+> **Aliases**: You can also use `/seedguard`, `/seedprotector`, `/seedshield`, or `/sp` (e.g. `/sp audit`, `/seedguard randomize`).
+> **Subcommand Aliases**:
+> - `audit` accepts `check` and `status`.
+> - `randomize` accepts `shuffle` and `scramble`.
 
 ---
 
@@ -52,12 +57,12 @@ Using client-side seed-cracking tools (such as *SeedcrackerX*), malicious player
 1. Download the latest `SeedProtector-1.0.0.jar` from [Releases](https://github.com/UsefulOrb/SeedProtector/releases) or [Modrinth](https://modrinth.com).
 2. Place the JAR into your server's `plugins/` directory.
 3. Start the server to generate default configurations.
-4. Run `/seedprotector scramble` in the console or as an OP in-game.
+4. Run `/seedprotect randomize` in the console or as an OP in-game.
 5. Follow the prompted instructions:
    1. Stop the server (`stop`).
    2. Delete existing world folders (`world`, `world_nether`, `world_the_end`).
    3. Start the server again to generate a fresh, protected world.
-6. Verify protection with `/seedprotector status`.
+6. Verify protection with `/seedprotect audit`.
 
 ---
 
