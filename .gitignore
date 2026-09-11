@@ -1,0 +1,19 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Kotlin cache (if previously used)
+.kotlin/
+
+# IDE / Editor files
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+.vscode/
+
+# Logs & temp files
+*.log
+hs_err_pid*

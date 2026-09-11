@@ -1,0 +1,26 @@
+name: SeedProtector
+version: '${version}'
+main: me.usefulorb.seedprotector.SeedProtectorPlugin
+api-version: '26.2'
+description: Prevents world seed cracking by randomizing structure and feature seeds
+authors: [ UsefulOrb ]
+website: usefulorb.me
+commands:
+  seedprotector:
+    description: SeedProtector management and audit command
+    usage: /seedprotector <audit|randomize>
+    aliases:
+      - sp
+permissions:
+  seedprotector.admin:
+    description: Full administrative access to SeedProtector
+    default: op
+    children:
+      seedprotector.audit: true
+      seedprotector.randomize: true
+  seedprotector.audit:
+    description: Allows auditing the server structure seeds
+    default: op
+  seedprotector.randomize:
+    description: Allows randomizing server structure and feature seeds
+    default: op
